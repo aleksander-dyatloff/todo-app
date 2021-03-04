@@ -1,0 +1,8 @@
+@import '../vars.scss';
+
+.paper {
+  display: flex;
+  border-radius: $border-radius;
+  background-color: $secondary-color;
+  padding: $spacing * 2;
+}

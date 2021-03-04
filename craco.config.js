@@ -7,6 +7,7 @@ module.exports = {
       '@redux': path.resolve(__dirname, 'src/redux/'),
       '@utils': path.resolve(__dirname, 'src/utils/'),
       '@pages': path.resolve(__dirname, 'src/pages/'),
+      '@src': path.resolve(__dirname, 'src/'),
     }
   }
 }

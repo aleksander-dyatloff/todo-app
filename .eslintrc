@@ -9,7 +9,9 @@
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off"
   },
   "ignorePatterns": [
     "craco.config.js"

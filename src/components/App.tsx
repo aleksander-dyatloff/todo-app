@@ -1,8 +1,17 @@
 import '@components/App.scss';
+import Typography from '@components/Typography';
+import Paper from '@components/Paper';
 
 function App() {
   return (
-    <div className="App">Hello React!</div>
+    <Paper>
+      <Typography
+        variant="h1"
+        transform="uppercase"
+      >
+        Hello world!
+      </Typography>
+    </Paper>
   );
 }
 
