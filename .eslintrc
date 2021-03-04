@@ -1,0 +1,14 @@
+{
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "extends": [
+    "airbnb-typescript"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  },
+  "ignorePatterns": [
+    "craco.config.js"
+  ]
+}
