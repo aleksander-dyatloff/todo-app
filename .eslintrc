@@ -3,7 +3,9 @@
     "project": "./tsconfig.json"
   },
   "extends": [
-    "airbnb-typescript"
+    "airbnb-typescript",
+    "react-app",
+    "react-app/jest"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off"
