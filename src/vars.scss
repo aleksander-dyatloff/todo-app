@@ -1,6 +1,6 @@
 $font-family: 'Roboto', sans-serif;
 $font-size: 16px;
-$letter-spacing: 0.4px;
+$letter-spacing: 0.1px;
 
 $primary-color: #1c54b2;
 $primary-color-dark: $primary-color - 50;
@@ -8,6 +8,13 @@ $secondary-color: #e0e0e0;
 $primary-contrast-color: #f5f5f5;
 $secondary-contrast-color: #424242;
 $background-color: #f5f5f5;
+
+$red-color: #b71c1c;
+$red-color-dark: $red-color - 50;
+$green-color: #2e7d32;
+$green-color-dark: $green-color - 50;
+$blue-color: #303f9f;
+$blue-color-dark: $blue-color - 50;
 
 $border-radius: 12px;
 $border-width: 2px;

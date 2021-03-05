@@ -1,18 +1,19 @@
 import {
   AllHTMLAttributes, FC, MouseEventHandler, useCallback,
 } from 'react';
-import '@components/CheckBox.scss';
-import { ButtonTypes } from '@utils/types';
+import { ButtonTypes, Color } from '@utils/types';
 import CheckIcon from '@icons/CheckIcon';
 import IconButton from '@components/IconButton';
 
 interface CheckBoxProps extends AllHTMLAttributes<HTMLElement> {
   type?: ButtonTypes
+  color?: Color | ''
 }
 
 const CheckBox: FC<CheckBoxProps> = (props) => {
   const {
     checked = false,
+    color = '',
     onChange,
     onClick,
     className = '',
@@ -39,7 +40,7 @@ const CheckBox: FC<CheckBoxProps> = (props) => {
       data-checked={checked}
       role="checkbox"
       aria-checked={checked}
-      className={`checkbox ${className}`}
+      className={`checkbox ${color} ${className}`}
       {...restProps}
     >
       <CheckIcon />

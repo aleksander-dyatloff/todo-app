@@ -1,5 +1,4 @@
 import { AllHTMLAttributes, FC } from 'react';
-import '@components/Divider.scss';
 
 interface DividerProps extends AllHTMLAttributes<HTMLDivElement> {
   variant?: 'vertical' | 'horizontal'

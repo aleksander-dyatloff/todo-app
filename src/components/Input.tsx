@@ -1,7 +1,6 @@
 import {
   AllHTMLAttributes, FC, MouseEventHandler, useCallback,
 } from 'react';
-import '@components/Input.scss';
 import Ripple from '@components/Ripple';
 import DynamicElement from './DynamicElement';
 

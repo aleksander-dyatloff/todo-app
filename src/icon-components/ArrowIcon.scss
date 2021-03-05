@@ -1,0 +1,20 @@
+@import '../vars.scss';
+
+.arrow-icon {
+  transform-origin: transform;
+  transition-duration: $tr-duration;
+  transition-timing-function: $tr-timing-fn;
+
+  &.top {
+    transform: rotate(90deg);
+  }
+  &.right {
+    transform: rotate(180deg);
+  }
+  &.bottom {
+    transform: rotate(-90deg);
+  }
+  &.left {
+    transform: rotate(0deg);
+  }
+}

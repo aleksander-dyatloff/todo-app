@@ -1,5 +1,4 @@
 import { AllHTMLAttributes, FC } from 'react';
-import '@components/IconButton.scss';
 import { ButtonTypes } from '@utils/types';
 import Button from '@components/Button';
 

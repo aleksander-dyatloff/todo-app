@@ -12,13 +12,14 @@ const Typography: FC<TypographyProps> = (props) => {
   const {
     variant = 'p',
     transform = '',
+    className = '',
     children,
     ...restProps
   } = props;
 
   return (
     <DynamicElement
-      className={`typography ${transform} ${variant}`}
+      className={`typography ${transform} ${variant} ${className}`}
       element={variant}
       {...restProps}
     >

@@ -1,5 +1,4 @@
 import { AllHTMLAttributes, FC } from 'react';
-import '@components/Paper.scss';
 import DynamicElement from '@components/DynamicElement';
 
 interface PaperProps extends AllHTMLAttributes<HTMLElement> {
@@ -9,13 +8,14 @@ interface PaperProps extends AllHTMLAttributes<HTMLElement> {
 const Paper: FC<PaperProps> = (props) => {
   const {
     element = 'div',
+    className = '',
     children,
     ...restProps
   } = props;
 
   return (
     <DynamicElement
-      className="paper"
+      className={`paper ${className}`}
       element={element}
       {...restProps}
     >

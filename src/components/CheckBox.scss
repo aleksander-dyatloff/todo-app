@@ -5,6 +5,8 @@
   border-radius: 50%;
   justify-content: center;
   align-items: center;
+  background-color: transparent;
+  padding: 0;
 
   &:hover {
     background-color: rgba($color: $primary-color, $alpha: 0.2);
@@ -30,4 +32,50 @@
     background-color: $primary-color;
     color: $primary-contrast-color;
   }
+
+  &.red {
+    &:hover {
+      background-color: rgba($color: $red-color-dark, $alpha: 0.2);
+    }
+    & > .icon {
+      border-color: $red-color;
+    }
+    &[data-checked=true] > .icon {
+      background-color: $red-color;
+    }
+    &[data-checked=true]:hover > .icon {
+      background-color: $red-color-dark;
+      border-color: $red-color-dark;
+    }
+  }
+  &.blue {
+    &:hover {
+      background-color: rgba($color: $blue-color-dark, $alpha: 0.2);
+    }
+    & > .icon {
+      border-color: $blue-color;
+    }
+    &[data-checked=true] > .icon {
+      background-color: $blue-color;
+    }
+    &[data-checked=true]:hover > .icon {
+      background-color: $blue-color-dark;
+      border-color: $blue-color-dark;
+    }
+  }
+  &.green {
+    &:hover {
+      background-color: rgba($color: $green-color-dark, $alpha: 0.2);
+    }
+    & > .icon {
+      border-color: $green-color;
+    }
+    &[data-checked=true] > .icon {
+      background-color: $green-color;
+    }
+    &[data-checked=true]:hover > .icon {
+      background-color: $green-color-dark;
+      border-color: $green-color-dark;
+    }
+  } 
 }

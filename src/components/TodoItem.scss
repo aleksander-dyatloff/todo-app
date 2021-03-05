@@ -1,0 +1,42 @@
+@import '../vars.scss';
+
+.todo-item {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: $spacing * 2;
+  }
+
+  &__title {
+    margin-left: $spacing * 1.5;
+    margin-right: auto;
+  }
+
+  &__expand-btn {
+    margin-right: $spacing / 2;
+  }
+
+  &__mark {
+    position: absolute;
+    background-color: gray;
+    width: $border-radius;
+    top: 0;
+    bottom: 0;
+
+    &.red {
+      background-color: $red-color;
+    }
+    &.blue {
+      background-color: $blue-color;
+    }
+    &.green {
+      background-color: $green-color;
+    }
+  }
+}

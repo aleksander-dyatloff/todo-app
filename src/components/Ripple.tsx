@@ -3,7 +3,6 @@ import {
   FC, MouseEventHandler, useCallback, useState,
 } from 'react';
 import DynamicElement from '@components/DynamicElement';
-import '@components/Ripple.scss';
 
 interface RippleProps extends AllHTMLAttributes<HTMLElement> {
   element?: keyof HTMLElementTagNameMap

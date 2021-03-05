@@ -13,3 +13,15 @@ html {
 body {
   margin: 0;
 }
+
+@import './components/App.scss';
+@import './components/Container.scss';
+@import './components/Ripple.scss';
+@import './components/Paper.scss';
+@import './components/Typography.scss';
+@import './components/Divider.scss';
+@import './components/Button.scss';
+@import './components/IconButton.scss';
+@import './components/CheckBox.scss';
+@import './components/Input.scss';
+@import './components/TodoItem.scss';

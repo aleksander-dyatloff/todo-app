@@ -1,5 +1,4 @@
 import { AllHTMLAttributes, FC } from 'react';
-import '@components/Button.scss';
 import { ButtonTypes } from '@utils/types';
 import Ripple from '@components/Ripple';
 
