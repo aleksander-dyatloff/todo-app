@@ -6,7 +6,8 @@
       "@redux/*": ["redux/*"],
       "@pages/*": ["pages/*"],
       "@utils/*": ["utils/*"],
-      "@src/*": ["src/*"]
+      "@src/*": ["/*"],
+      "@icons/*": ["icon-components/*"]
     }
   }
 }

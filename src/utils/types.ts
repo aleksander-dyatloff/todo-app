@@ -6,6 +6,8 @@ export type TypographyElementName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p
 
 export type TextTransform = 'capitalize' | 'lowercase' | 'uppercase' | '';
 
+export type ButtonTypes = 'button' | 'reset' | 'submit' | undefined;
+
 export interface Todo {
   readonly id: number
   title: string
