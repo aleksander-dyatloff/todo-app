@@ -1,5 +1,7 @@
 import { Todo } from '@utils/types';
-import { FC, memo, MouseEventHandler } from 'react';
+import {
+  FC, memo, MouseEventHandler, useCallback,
+} from 'react';
 import { useDispatch } from 'react-redux';
 import Paper from '@components/Paper';
 import CheckBox from '@components/CheckBox';
@@ -7,6 +9,7 @@ import Typography from '@components/Typography';
 import IconButton from '@components/IconButton';
 import CloseIcon from '@icons/CloseIcon';
 import ArrowIcon from '@icons/ArrowIcon';
+import { updateTodo } from '@redux/TodosSlice';
 
 interface TodoItemProps {
   todo: Todo
@@ -17,6 +20,12 @@ interface TodoItemProps {
 const TodoItem: FC<TodoItemProps> = ({ todo, expanded, expandTodo }) => {
   const dispatch = useDispatch();
 
+  const handleCheckTodo = useCallback(() => {
+    const { id, isDone } = todo;
+
+    dispatch(updateTodo({ id, isDone: !isDone }));
+  }, [dispatch, todo]);
+
   return (
     <Paper
       element="li"
@@ -25,11 +34,13 @@ const TodoItem: FC<TodoItemProps> = ({ todo, expanded, expandTodo }) => {
       <div className={`todo-item__mark ${todo.color}`} />
       <div className="todo-item__header">
         <CheckBox
+          onClick={handleCheckTodo}
           color={todo.color}
           className="todo-item__checkbox"
           checked={todo.isDone}
         />
         <Typography
+          onClick={handleCheckTodo}
           className="todo-item__title"
           variant="h6"
         >

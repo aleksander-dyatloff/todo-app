@@ -22,7 +22,7 @@ export interface TodoInfo {
   readonly id: number
   title?: string
   description?: string
-  isDone?: string
+  isDone?: boolean
   color?: Color
   startTime?: string
   endTime?: string
