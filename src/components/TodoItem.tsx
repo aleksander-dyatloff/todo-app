@@ -1,6 +1,6 @@
 import { Todo } from '@utils/types';
 import {
-  FC, memo, MouseEventHandler, useCallback,
+  FC, memo, MouseEventHandler, useCallback, useMemo, useState,
 } from 'react';
 import { useDispatch } from 'react-redux';
 import Paper from '@components/Paper';
@@ -9,27 +9,46 @@ import Typography from '@components/Typography';
 import IconButton from '@components/IconButton';
 import CloseIcon from '@icons/CloseIcon';
 import ArrowIcon from '@icons/ArrowIcon';
-import { updateTodo } from '@redux/TodosSlice';
+import { deleteTodo, updateTodo } from '@redux/TodosSlice';
 
 interface TodoItemProps {
   todo: Todo
   expanded: boolean
   expandTodo: MouseEventHandler
+  index: number
 }
 
-const TodoItem: FC<TodoItemProps> = ({ todo, expanded, expandTodo }) => {
+const TodoItem: FC<TodoItemProps> = (props) => {
+  const {
+    todo,
+    expanded,
+    expandTodo,
+    index,
+  } = props;
+
   const dispatch = useDispatch();
 
-  const handleCheckTodo = useCallback(() => {
-    const { id, isDone } = todo;
+  const [checked, setChecked] = useState(todo.isDone);
 
-    dispatch(updateTodo({ id, isDone: !isDone }));
-  }, [dispatch, todo]);
+  const handleCheckTodo = useCallback(() => {
+    setChecked((prevState) => !prevState);
+    dispatch(updateTodo({
+      id: todo.id,
+      isDone: !todo.isDone,
+    }));
+  }, [dispatch, todo.id, todo.isDone]);
+
+  const handleDeleteTodo = useCallback(() => {
+    dispatch(deleteTodo(todo.id));
+  }, [dispatch, todo.id]);
+
+  const todoItemStyles = useMemo(() => ({ transitionDelay: `${index * 25}ms` }), [index]);
 
   return (
     <Paper
       element="li"
       className="todo-item"
+      style={todoItemStyles}
     >
       <div className={`todo-item__mark ${todo.color}`} />
       <div className="todo-item__header">
@@ -37,11 +56,11 @@ const TodoItem: FC<TodoItemProps> = ({ todo, expanded, expandTodo }) => {
           onClick={handleCheckTodo}
           color={todo.color}
           className="todo-item__checkbox"
-          checked={todo.isDone}
+          checked={checked}
         />
         <Typography
           onClick={handleCheckTodo}
-          className="todo-item__title"
+          className={`todo-item__title ${checked ? 'done' : ''}`}
           variant="h6"
         >
           {todo.title}
@@ -56,6 +75,7 @@ const TodoItem: FC<TodoItemProps> = ({ todo, expanded, expandTodo }) => {
           <ArrowIcon direction={expanded ? 'top' : 'bottom'} />
         </IconButton>
         <IconButton
+          onClick={handleDeleteTodo}
           aria-label="delete todo"
           title="Delete todo"
         >

@@ -1,6 +1,6 @@
 export type Color = 'red' | 'blue' | 'green';
 
-export type FetchStatus = 'pending' | 'fulfilled' | 'rejected';
+export type FetchStatus = 'pending' | 'fulfilled' | 'rejected' | 'idle';
 
 export type TypographyElementName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 

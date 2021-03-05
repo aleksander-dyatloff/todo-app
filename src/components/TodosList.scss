@@ -1,0 +1,14 @@
+@import '../vars.scss';
+
+.todos-list {
+  display: flex;
+  flex-direction: column;
+
+  & > .todo-item {
+    margin-top: 0;
+  }
+  
+  &__progress {
+    margin: 0 auto;
+  }
+}

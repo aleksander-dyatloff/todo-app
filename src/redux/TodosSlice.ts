@@ -1,6 +1,8 @@
 import { RootState } from '@redux/store';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { FULFILLED, PENDING, REJECTED } from '@utils/constants';
+import {
+  FULFILLED, IDLE, PENDING, REJECTED,
+} from '@utils/constants';
 import path from '@utils/paths';
 import { FetchStatus, Todo, TodoInfo } from '@utils/types';
 import axios from 'axios';
@@ -47,7 +49,7 @@ export interface TodosSliceState {
 }
 
 const initialState: TodosSliceState = {
-  fetchStatus: PENDING,
+  fetchStatus: IDLE,
   todos: [],
 };
 
