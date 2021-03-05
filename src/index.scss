@@ -1,6 +1,10 @@
 @import './reset.scss';
 @import './vars.scss';
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-size: $font-size;
   font-family: $font-family;

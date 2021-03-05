@@ -5,6 +5,7 @@ import Button from '@components/Button';
 
 interface IconButtonProps extends AllHTMLAttributes<HTMLButtonElement> {
   type?: ButtonTypes
+  duration?: number
 }
 
 const IconButton: FC<IconButtonProps> = (props) => {

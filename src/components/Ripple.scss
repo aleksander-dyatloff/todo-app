@@ -1,6 +1,6 @@
 @import '../vars.scss';
 
-.button {
+.ripple {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -12,26 +12,37 @@
   text-transform: uppercase;
   font-family: inherit;
   font-weight: 500;
-  padding: $spacing;
   cursor: pointer;
   user-select: none;
   font-size: $font-size;
   outline: none;
-  color: $primary-contrast-color;
-  background-color: $primary-color;
   transition-property: background-color, opacity;
   transition-duration: $tr-duration;
   transition-timing-function: $tr-timing-fn;
 
-  &:hover {
-    background-color: $primary-color-dark;
+  &__container {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    position: absolute;
   }
 
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+  &__elem {
+    position: absolute;
+    transform: scale(0);
+    border-radius: 50%;
+    opacity: 0.5;
+    background-color: white;
+    animation-name: ripple;
   }
-  &:hover:disabled {
-    background-color: $primary-color;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2);
+    opacity: 0;
   }
 }

@@ -1,0 +1,33 @@
+@import '../vars.scss';
+
+.checkbox {
+  display: inline-flex;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: rgba($color: $primary-color, $alpha: 0.2);
+  }
+  &:hover > .icon {
+    border-color: $primary-color-dark;
+  }
+  &[data-checked=true]:hover > .icon {
+    background-color: $primary-color-dark;
+  }
+
+  & > .icon {
+    color: transparent;
+    width: 24px;
+    height: 24px;
+    border: 3px solid $primary-color;
+    border-radius: $border-radius / 1.5;
+    transition-property: background-color, border-color, color;
+    transition-duration: $tr-duration;
+    transition-timing-function: $tr-timing-fn;
+  }
+  &[data-checked=true] > .icon {
+    background-color: $primary-color;
+    color: $primary-contrast-color;
+  }
+}

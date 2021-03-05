@@ -14,7 +14,8 @@
     "react/jsx-props-no-spreading": "off",
     "react/button-has-type": "off",
     "react/no-array-index-key": "off",
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "no-else-return": "off"
   },
   "ignorePatterns": [
     "craco.config.js"

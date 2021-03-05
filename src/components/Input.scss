@@ -1,0 +1,35 @@
+@import '../vars.scss';
+
+.input {
+  cursor: text;
+
+  &[data-disabled=true] {
+    cursor: not-allowed;
+  }
+
+  &__elem {
+    border-radius: $border-radius / 1.5;
+    border: none;
+    background-color: $background-color;
+    padding: $spacing;
+    font-family: $font-family;
+    font-weight: 500;
+    font-size: $font-size;
+    letter-spacing: $letter-spacing;
+    outline: none;
+    color: $secondary-contrast-color;
+    caret-color: $secondary-contrast-color;
+    resize: none;
+    transition-property: opacity;
+    transition-delay: $tr-duration;
+    transition-timing-function: $tr-timing-fn;
+  }
+
+  &__elem:disabled {
+    opacity: 0.6;
+  }
+
+  & .ripple__elem {
+    background-color: $secondary-color;
+  }
+}
