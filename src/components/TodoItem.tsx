@@ -11,6 +11,7 @@ import CloseIcon from '@icons/CloseIcon';
 import ArrowIcon from '@icons/ArrowIcon';
 import { deleteTodo, updateTodo } from '@redux/TodosSlice';
 import Ticker from './Ticker';
+import TodoBody from './TodoBody';
 
 interface TodoItemProps {
   todo: Todo
@@ -89,6 +90,10 @@ const TodoItem: FC<TodoItemProps> = (props) => {
           <CloseIcon />
         </IconButton>
       </div>
+      <TodoBody
+        todo={todo}
+        expanded={expanded}
+      />
     </Paper>
   );
 };
