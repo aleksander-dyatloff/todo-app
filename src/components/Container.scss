@@ -1,6 +1,8 @@
 @import '../vars.scss';
 
 .container {
+  min-height: 100vh;
+  position: relative;
   max-width: 600px;
   margin: 0 auto;
 }

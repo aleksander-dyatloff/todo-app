@@ -1,7 +1,12 @@
 @import '../vars.scss';
 
 .todo-push-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
+  overflow: hidden;
+  box-shadow: 0 0 0 8px $background-color;
 
   &__input {
     margin-bottom: $spacing;
@@ -12,5 +17,20 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+  }
+
+  &__progress {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .todo-push-bar {
+    &__field-group {
+      width: 100%;
+    }
   }
 }

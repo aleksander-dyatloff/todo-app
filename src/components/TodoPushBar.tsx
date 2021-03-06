@@ -1,16 +1,21 @@
-import { FC, memo, useCallback } from 'react';
+import {
+  FC, memo, useCallback, useState,
+} from 'react';
 import Paper from '@components/Paper';
 import Input from '@components/Input';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { createTodo } from '@redux/TodosSlice';
 import { TodoValues } from '@utils/types';
-import Button from './Button';
+import Button from '@components/Button';
+import Progress from '@components/Progress';
 
 const TodoPushBar: FC = (props) => {
   const dispatch = useDispatch();
 
-  const { values: todoInfo, getFieldProps } = useFormik({
+  const [loading, setLoading] = useState(false);
+
+  const { values: todoInfo, getFieldProps, resetForm } = useFormik({
     onSubmit: () => {},
     initialValues: {
       title: '',
@@ -22,11 +27,22 @@ const TodoPushBar: FC = (props) => {
   });
 
   const handleCreateTodo = useCallback(async () => {
+    setLoading(true);
+
     await dispatch(createTodo(todoInfo));
-  }, [dispatch, todoInfo]);
+
+    setLoading(false);
+
+    resetForm();
+  }, [dispatch, todoInfo, resetForm]);
 
   return (
     <Paper className="todo-push-bar">
+      <Progress
+        className="todo-push-bar__progress"
+        variant="linear"
+        visible={loading}
+      />
       <div className="todo-push-bar__field-group">
         <Input
           className="todo-push-bar__input"
@@ -41,7 +57,7 @@ const TodoPushBar: FC = (props) => {
         />
         <Button
           onClick={handleCreateTodo}
-          disabled={!todoInfo.title?.trim()}
+          disabled={!todoInfo.title?.trim() || loading}
         >
           Add todo
         </Button>
