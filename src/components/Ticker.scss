@@ -1,0 +1,23 @@
+@import '../vars.scss';
+
+.ticker {
+  overflow: hidden;
+  display: flex;
+
+  & > * {
+    display: inline-flex;
+  }
+  & > *:last-child {
+    margin-right: 0;
+  }
+
+  &.scroll > * {
+    animation: run 3000ms linear infinite;
+  }
+}
+
+@keyframes run {
+  to {
+    transform: translateX(-100%);
+  }
+}

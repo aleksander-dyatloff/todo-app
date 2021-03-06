@@ -1,10 +1,12 @@
-import { AllHTMLAttributes, createElement, FC } from 'react';
+import {
+  AllHTMLAttributes, createElement, forwardRef,
+} from 'react';
 
 interface DynamicElementProps extends AllHTMLAttributes<HTMLElement> {
   element?: keyof HTMLElementTagNameMap
 }
 
-const DynamicElement: FC<DynamicElementProps> = (props) => {
+const DynamicElement = forwardRef<HTMLElement, DynamicElementProps>((props, ref) => {
   const {
     element = 'div',
     children,
@@ -13,9 +15,9 @@ const DynamicElement: FC<DynamicElementProps> = (props) => {
 
   return createElement(
     element,
-    restProps,
+    { ref, ...restProps },
     children,
   );
-};
+});
 
 export default DynamicElement;

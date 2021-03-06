@@ -10,6 +10,7 @@ import IconButton from '@components/IconButton';
 import CloseIcon from '@icons/CloseIcon';
 import ArrowIcon from '@icons/ArrowIcon';
 import { deleteTodo, updateTodo } from '@redux/TodosSlice';
+import Ticker from './Ticker';
 
 interface TodoItemProps {
   todo: Todo
@@ -58,13 +59,18 @@ const TodoItem: FC<TodoItemProps> = (props) => {
           className="todo-item__checkbox"
           checked={checked}
         />
-        <Typography
-          onClick={handleCheckTodo}
-          className={`todo-item__title ${checked ? 'done' : ''}`}
-          variant="h6"
+        <Ticker
+          enable={expanded}
+          className="todo-item__ticker"
         >
-          {todo.title}
-        </Typography>
+          <Typography
+            onClick={handleCheckTodo}
+            className={`todo-item__title ${checked ? 'done' : ''}`}
+            variant="h6"
+          >
+            {todo.title}
+          </Typography>
+        </Ticker>
         <IconButton
           className="todo-item__expand-btn todo-item__btn"
           onClick={expandTodo}

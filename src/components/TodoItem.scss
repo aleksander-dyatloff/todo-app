@@ -38,27 +38,31 @@
     padding: $spacing * 2;
   }
 
+  &__ticker {
+    margin-left: $spacing / 2;
+    margin-right: auto;
+  }
+
   &__title {
-    overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
     position: relative;
     cursor: pointer;
     user-select: none;
-    margin-left: $spacing / 2;
+    padding-left: $spacing / 2;
     margin-right: auto;
     transition-property: color;
     transition-duration: $tr-duration;
     transition-timing-function: $tr-timing-fn;
+    padding-right: $spacing * 3;
 
     &::after {
       content: '';
       position: absolute;
       top: 0;
       bottom: 0;
-      left: 0;
+      left: $spacing / 2;
+      right: $spacing * 3;
       margin: auto 0;
-      width: 100%;
       height: 2px;
       background-color: gray;
       border-radius: 2px;

@@ -2,7 +2,7 @@
 
 .todo-push-bar {
   position: sticky;
-  top: 0;
+  top: $spacing * 2;
   z-index: 1;
   display: flex;
   overflow: hidden;

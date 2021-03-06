@@ -1,6 +1,4 @@
-import {
-  AllHTMLAttributes, FC, MouseEventHandler, useCallback,
-} from 'react';
+import { AllHTMLAttributes, FC } from 'react';
 import Ripple from '@components/Ripple';
 import DynamicElement from './DynamicElement';
 
@@ -17,15 +15,8 @@ const Input: FC<InputProps> = (props) => {
     ...restProps
   } = props;
 
-  const handleInputFocus: MouseEventHandler<HTMLElement> = useCallback((e) => {
-    const input: HTMLInputElement | null = e.currentTarget.querySelector('.input > .input__elem');
-
-    if (input) input.focus();
-  }, []);
-
   return (
     <Ripple
-      onClick={handleInputFocus}
       className={`input ${className}`}
       disabled={disabled}
       data-disabled={disabled}
