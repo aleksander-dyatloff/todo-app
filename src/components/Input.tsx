@@ -26,14 +26,14 @@ const Input: FC<InputProps> = (props) => {
   return (
     <Ripple
       onClick={handleInputFocus}
-      className="input"
+      className={`input ${className}`}
       disabled={disabled}
       data-disabled={disabled}
     >
       <DynamicElement
         disabled={disabled}
         element={variant}
-        className={`input__elem ${className}`}
+        className="input__elem"
         value={value}
         {...restProps}
       />

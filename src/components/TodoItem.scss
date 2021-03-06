@@ -19,6 +19,7 @@
     transform: scale(1);
   }
   &-exit {
+    transition-delay: 0ms !important;
     transition-timing-function: ease-in;
     opacity: 1;
     transform: scale(1);
@@ -38,10 +39,13 @@
   }
 
   &__title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     position: relative;
     cursor: pointer;
     user-select: none;
-    margin-left: $spacing * 1.5;
+    margin-left: $spacing / 2;
     margin-right: auto;
     transition-property: color;
     transition-duration: $tr-duration;
@@ -72,8 +76,16 @@
     }
   }
 
+  &__checkbox {
+    flex-shrink: 0;
+  }
+
+  &__btn {
+    flex-shrink: 0;
+  }
+
   &__expand-btn {
-    margin-right: $spacing / 2;
+    margin-inline: $spacing / 2;
   }
 
   &__mark {

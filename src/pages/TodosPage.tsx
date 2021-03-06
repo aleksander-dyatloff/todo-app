@@ -1,5 +1,5 @@
 import Container from '@components/Container';
-import Paper from '@components/Paper';
+import TodoPushBar from '@components/TodoPushBar';
 import TodosList from '@components/TodosList';
 import { fetchTodos, todosSliceSelector, TodosSliceState } from '@redux/TodosSlice';
 import { PENDING } from '@utils/constants';
@@ -17,7 +17,7 @@ const TodosPage: FC = (props) => {
 
   return (
     <Container>
-      <Paper />
+      <TodoPushBar />
       <TodosList
         todos={todos}
         loading={fetchStatus === PENDING}

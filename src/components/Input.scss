@@ -8,9 +8,12 @@
   }
 
   &__elem {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
     border-radius: $border-radius / 1.5;
     border: none;
-    background-color: $background-color;
+    background-color: transparent;
     padding: $spacing;
     font-family: $font-family;
     font-weight: 500;
@@ -20,6 +23,7 @@
     color: $secondary-contrast-color;
     caret-color: $secondary-contrast-color;
     resize: none;
+    user-select: auto;
     transition-property: opacity;
     transition-delay: $tr-duration;
     transition-timing-function: $tr-timing-fn;
@@ -29,7 +33,12 @@
     opacity: 0.6;
   }
 
+  & > .ripple__container {
+    z-index: 0;
+    background-color: $background-color;
+  }
+
   & .ripple__elem {
-    background-color: $secondary-color;
+    background-color: black;
   }
 }

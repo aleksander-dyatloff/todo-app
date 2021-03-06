@@ -27,3 +27,12 @@ export interface TodoInfo {
   startTime?: string
   endTime?: string
 }
+
+export interface TodoValues {
+  title?: string
+  description?: string
+  isDone?: boolean
+  color?: Color
+  startTime?: string
+  endTime?: string
+}

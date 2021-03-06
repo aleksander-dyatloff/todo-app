@@ -59,6 +59,7 @@ const Ripple: FC<RippleProps> = (props) => {
       className={`ripple ${className}`}
       onMouseDown={disabled ? undefined : handleCreateRipple}
       element={element}
+      disabled={disabled}
       {...restProps}
     >
       {children}

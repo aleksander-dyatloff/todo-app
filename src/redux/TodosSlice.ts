@@ -4,7 +4,9 @@ import {
   FULFILLED, IDLE, PENDING, REJECTED,
 } from '@utils/constants';
 import path from '@utils/paths';
-import { FetchStatus, Todo, TodoInfo } from '@utils/types';
+import {
+  FetchStatus, Todo, TodoInfo, TodoValues,
+} from '@utils/types';
 import axios from 'axios';
 
 const name: string = 'todos';
@@ -17,7 +19,7 @@ export const fetchTodos = createAsyncThunk(`${name}/fetchTodos`, async () => {
   return fetchedTodos;
 });
 
-export const createTodo = createAsyncThunk(`${name}/createTodo`, async (todoInfo: TodoInfo) => {
+export const createTodo = createAsyncThunk(`${name}/createTodo`, async (todoInfo: TodoValues) => {
   const response = await axios.post(path.api.todos, todoInfo);
 
   const createdTodo: Todo = response.data;

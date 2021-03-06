@@ -66,7 +66,7 @@ const TodoItem: FC<TodoItemProps> = (props) => {
           {todo.title}
         </Typography>
         <IconButton
-          className="todo-item__expand-btn"
+          className="todo-item__expand-btn todo-item__btn"
           onClick={expandTodo}
           name={String(todo.id)}
           aria-label="expand todo"
@@ -75,6 +75,7 @@ const TodoItem: FC<TodoItemProps> = (props) => {
           <ArrowIcon direction={expanded ? 'top' : 'bottom'} />
         </IconButton>
         <IconButton
+          className="todo-item__btn"
           onClick={handleDeleteTodo}
           aria-label="delete todo"
           title="Delete todo"
