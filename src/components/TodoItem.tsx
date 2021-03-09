@@ -84,29 +84,31 @@ const TodoItem: FC<TodoItemProps> = (props) => {
           className="todo-item__checkbox"
           checked={checked}
         />
+        <div className={`todo-item__title-wrapper ${editorMode ? 'edit' : ''}`}>
 
-        {editorMode ? (
-          <Input
-            autoComplete="off"
-            className="todo-item__title-input"
-            placeholder="Todo title..."
-            {...getFieldProps('title')}
-          />
-        ) : (
-          <Ticker
-            enable={expanded}
-            className="todo-item__ticker"
-          >
-            <Typography
-              onClick={handleCheckTodo}
-              className={`todo-item__title ${checked ? 'done' : ''}`}
-              variant="h6"
+          {editorMode ? (
+            <Input
+              autoComplete="off"
+              className="todo-item__title-input"
+              placeholder="Todo title..."
+              {...getFieldProps('title')}
+            />
+          ) : (
+            <Ticker
+              enable={expanded}
+              className="todo-item__ticker"
             >
-              {todo.title}
-            </Typography>
-          </Ticker>
-        )}
+              <Typography
+                onClick={handleCheckTodo}
+                className={`todo-item__title ${checked ? 'done' : ''}`}
+                variant="h6"
+              >
+                {todo.title}
+              </Typography>
+            </Ticker>
+          )}
 
+        </div>
         <IconButton
           className="todo-item__expand-btn todo-item__btn"
           onClick={expanded ? closeTodo : expandTodo}

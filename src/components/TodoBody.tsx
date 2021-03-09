@@ -10,6 +10,7 @@ import Input from '@components/Input';
 import Typography from '@components/Typography';
 import { useDispatch } from 'react-redux';
 import { updateTodo } from '@redux/TodosSlice';
+import CheckIcon from '@icons/CheckIcon';
 import Progress from './Progress';
 
 interface TodoBodyProps {
@@ -66,25 +67,27 @@ const TodoBody: FC<TodoBodyProps> = (props) => {
             className="todo-body__update-progress"
             visible={updateLoading}
           />
-          <PencilIcon />
+          {editorMode ? <CheckIcon /> : <PencilIcon />}
         </IconButton>
         <Divider className="todo-body__divider" />
+        <div className={`todo-body__description-wrapper ${editorMode ? 'edit' : ''}`}>
 
-        {editorMode ? (
-          <Input
-            className="todo-body__description-input"
-            placeholder="Todo description..."
-            variant="textarea"
-            {...getFieldProps('description')}
-          />
-        ) : (
-          <Typography
-            className="todo-body__description"
-          >
-            {todo.description ? todo.description : 'No description'}
-          </Typography>
-        )}
+          {editorMode ? (
+            <Input
+              className="todo-body__description-input"
+              placeholder="Todo description..."
+              variant="textarea"
+              {...getFieldProps('description')}
+            />
+          ) : (
+            <Typography
+              className="todo-body__description"
+            >
+              {todo.description ? todo.description : 'No description'}
+            </Typography>
+          )}
 
+        </div>
       </div>
     </CSSTransition>
   );

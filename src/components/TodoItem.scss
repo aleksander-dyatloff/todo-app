@@ -107,6 +107,25 @@
     font-size: 1.2rem;
     flex: 1 1;
     margin-right: auto;
+    
+    & > .ripple__container {
+      background-color: transparent;
+    }
+  }
+
+  &__title-wrapper {
+    overflow: hidden;
+    border-radius: calc(var(--border-radius) / 1.5);
+    flex: 1 1;
+    display: inline-flex;
+    background-color: transparent;
+    transition-property: background-color;
+    transition-duration: var(--tr-duration);
+    transition-timing-function: var(--tr-timing-fn);
+
+    &.edit {
+      background-color: var(--background-color);
+    }
   }
 
   &__checkbox {

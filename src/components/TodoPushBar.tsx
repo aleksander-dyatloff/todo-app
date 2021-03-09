@@ -13,6 +13,7 @@ import mediaQuery from '@utils/mediaQuery';
 import ColorPicker from '@components/ColorPicker';
 import TrippleDotIcon from '@icons/TrippleDotIcon';
 import IconButton from '@components/IconButton';
+import CloseIcon from '@icons/CloseIcon';
 
 const TodoPushBar: FC = (props) => {
   const dispatch = useDispatch();
@@ -82,7 +83,7 @@ const TodoPushBar: FC = (props) => {
               color={todoInfo.color}
               className="todo-push-bar__expand-advanced-setting-btn"
             >
-              <TrippleDotIcon />
+              {expandedSettings ? <CloseIcon /> : <TrippleDotIcon />}
             </IconButton>
           )}
 
