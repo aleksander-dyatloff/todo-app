@@ -1,8 +1,9 @@
 import { AllHTMLAttributes, FC } from 'react';
-import { ButtonTypes } from '@utils/types';
+import { AppColor, ButtonTypes } from '@utils/types';
 import Ripple from '@components/Ripple';
 
 interface ButtonProps extends AllHTMLAttributes<HTMLButtonElement> {
+  color?: AppColor
   type?: ButtonTypes
   duration?: number
 }
@@ -11,13 +12,14 @@ const Button: FC<ButtonProps> = (props) => {
   const {
     children,
     className = '',
+    color = 'primary',
     ...restProps
   } = props;
 
   return (
     <Ripple
       element="button"
-      className={`button ${className}`}
+      className={`button ${color} ${className}`}
       {...restProps}
     >
       {children}

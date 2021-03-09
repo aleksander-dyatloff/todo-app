@@ -1,21 +1,73 @@
 @import './reset.scss';
-@import './vars.scss';
+
+:root {
+  --font-family: 'Roboto', sans-serif;
+  --font-size: 16px;
+  --letter-spacing: 0.1px;
+
+  --background-color: #f5f5f5;
+
+  --spacing: 8px;
+
+  --border-radius: 12px;
+
+  --tr-duration: 150ms;
+  --tr-timing-fn: ease-in-out;
+  --tr-timing-fn-in: ease-out;
+  --tr-timing-fn-out: ease-in;
+
+  --anim-duration: 300ms;
+  --anim-timing-fn: ease-in-out;
+  --anim-timing-fn-in: ease-out;
+  --anim-timing-fn-out: ease-in;
+}
+
+.primary {
+  --color: #1c54b2;
+  --color-dark: #133a7c;
+  --contrast-color: #f5f5f5;
+
+  --color-rgb: 28, 84, 178;
+}
+.secondary {
+  --color: #e0e0e0;
+  --color-dark: #c7c7c7;
+  --contrast-color: #424242;
+
+  --color-rgb: 224, 224, 224;
+}
+.blue {
+  --color: #303f9f;
+  --color-dark: #212c6f;
+  --contrast-color: #f5f5f5;
+
+  --color-rgb: 48, 63, 159;
+}
+.red {
+  --color: #b71c1c;
+  --color-dark: #801313;
+  --contrast-color: #f5f5f5;
+
+  --color-rgb: 183, 28, 28;
+}
+.green {
+  --color: #2e7d32;
+  --color-dark: #205723;
+  --contrast-color: #f5f5f5;
+
+  --color-rgb: 46, 125, 50;
+}
 
 * {
   box-sizing: border-box;
 }
 
-html {
-  font-size: $font-size;
-  font-family: $font-family;
-}
-
 body {
-  margin: 0;
-  background-color: $background-color;
+  font-family: var(--font-family);
+  letter-spacing: var(--letter-spacing);
+  background-color: var(--background-color);
 }
 
-@import './components/App.scss';
 @import './components/Container.scss';
 @import './components/Ripple.scss';
 @import './components/Paper.scss';
@@ -23,11 +75,13 @@ body {
 @import './components/Divider.scss';
 @import './components/Button.scss';
 @import './components/IconButton.scss';
+@import './icon-components/ArrowIcon.scss';
 @import './components/CheckBox.scss';
 @import './components/Input.scss';
-@import './components/TodoItem.scss';
 @import './components/TodosList.scss';
 @import './components/Progress.scss';
-@import './components/TodoPushBar.scss';
 @import './components/Ticker.scss';
+@import './components/ColorPicker.scss';
+@import './components/TodoPushBar.scss';
+@import './components/TodoItem.scss';
 @import './components/TodoBody.scss';

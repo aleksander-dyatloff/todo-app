@@ -1,37 +1,36 @@
-@import '../vars.scss';
-
 .button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   position: relative;
-  border-radius: $border-radius / 1.5;
-  letter-spacing: $letter-spacing;
+  border-radius: calc(var(--border-radius) / 1.5);
+  letter-spacing: inherit;
   border: none;
   text-transform: uppercase;
   font-family: inherit;
   font-weight: 500;
-  padding: $spacing;
+  padding: var(--spacing);
   cursor: pointer;
   user-select: none;
-  font-size: $font-size;
+  font-size: inherit;
   outline: none;
-  color: $primary-contrast-color;
-  background-color: $primary-color;
+  color: var(--contrast-color);
+  background-color: var(--color);
   transition-property: background-color, opacity;
-  transition-duration: $tr-duration;
-  transition-timing-function: $tr-timing-fn;
+  transition-duration: var(--tr-duration);
+  transition-timing-function: var(--tr-timing-fn);
 
   &:hover {
-    background-color: $primary-color-dark;
+    background-color: var(--color-dark);
   }
 
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
+  
   &:hover:disabled {
-    background-color: $primary-color;
+    background-color: var(--color);
   }
 }

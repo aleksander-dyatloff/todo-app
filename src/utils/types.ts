@@ -8,6 +8,8 @@ export type TextTransform = 'capitalize' | 'lowercase' | 'uppercase' | '';
 
 export type ButtonTypes = 'button' | 'reset' | 'submit' | undefined;
 
+export type AppColor = Color | 'primary' | 'secondary';
+
 export interface Todo {
   readonly id: number
   title: string

@@ -1,24 +1,9 @@
-@import '../vars.scss';
-
 .ripple {
   display: inline-flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
   position: relative;
-  border-radius: $border-radius / 1.5;
-  letter-spacing: $letter-spacing;
-  border: none;
-  text-transform: uppercase;
-  font-family: inherit;
-  font-weight: 500;
-  cursor: pointer;
-  user-select: none;
-  font-size: $font-size;
+  border-radius: calc(var(--border-radius) / 1.5);
   outline: none;
-  transition-property: background-color, opacity;
-  transition-duration: $tr-duration;
-  transition-timing-function: $tr-timing-fn;
 
   &__container {
     top: 0;
@@ -38,6 +23,7 @@
     opacity: 0.5;
     background-color: white;
     animation-name: ripple;
+    animation-timing-function: var(--anim-timing-fn);
   }
 
   &:disabled {

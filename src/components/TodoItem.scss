@@ -1,16 +1,18 @@
-@import '../vars.scss';
-
 .todo-item {
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   padding: 0;
-  transition-property: transform, opacity, max-height, margin;
+  transition-property: transform, opacity, max-height, margin, background-color;
   transition-duration: 250ms;
 
+  &:hover {
+    background-color: var(--color-dark);
+  }
+
   &-enter {
-    transition-timing-function: ease-out;
+    transition-timing-function: var(--anim-timing-fn-in);
     opacity: 0;
     transform: scale(0.6);
   }
@@ -20,7 +22,7 @@
   }
   &-exit {
     transition-delay: 0ms !important;
-    transition-timing-function: ease-in;
+    transition-timing-function: var(--anim-timing-fn-out);
     opacity: 1;
     transform: scale(1);
     max-height: 68px;
@@ -35,12 +37,29 @@
   &__header {
     display: flex;
     align-items: center;
-    padding: $spacing * 2;
+    padding: calc(var(--spacing) * 2);
   }
 
   &__ticker {
-    margin-left: $spacing / 2;
+    margin-left: calc(var(--spacing) / 2);
     margin-right: auto;
+  }
+
+  &__delete-btn {
+    position: relative;
+  }
+
+  &__delete-progress {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+    &.progress-enter {
+      max-height: 32px;
+    }
   }
 
   &__title {
@@ -48,28 +67,28 @@
     position: relative;
     cursor: pointer;
     user-select: none;
-    padding-left: $spacing / 2;
+    padding-left: calc(var(--spacing) / 2);
     margin-right: auto;
     transition-property: color;
-    transition-duration: $tr-duration;
-    transition-timing-function: $tr-timing-fn;
-    padding-right: $spacing * 3;
+    transition-duration: var(--anim-duration);
+    transition-timing-function: var(--anim-timing-fn);
+    padding-right: calc(var(--spacing) * 3);
 
     &::after {
       content: '';
       position: absolute;
       top: 0;
       bottom: 0;
-      left: $spacing / 2;
-      right: $spacing * 3;
+      left: calc(var(--spacing) / 2);
+      right: calc(var(--spacing) * 3);
       margin: auto 0;
       height: 2px;
       background-color: gray;
       border-radius: 2px;
       transform: scaleX(0);
       transition-property: transform;
-      transition-duration: $tr-duration;
-      transition-timing-function: $tr-timing-fn;
+      transition-duration: var(--anim-duration);
+      transition-timing-function: var(--anim-timing-fn);
     }
   }
   &__title.done {
@@ -89,24 +108,15 @@
   }
 
   &__expand-btn {
-    margin-inline: $spacing / 2;
+    margin-inline: calc(var(--spacing) / 2);
   }
 
   &__mark {
     position: absolute;
     background-color: gray;
-    width: $border-radius;
+    width: var(--border-radius);
     top: 0;
     bottom: 0;
-
-    &.red {
-      background-color: $red-color;
-    }
-    &.blue {
-      background-color: $blue-color;
-    }
-    &.green {
-      background-color: $green-color;
-    }
+    background-color: var(--color);
   }
 }

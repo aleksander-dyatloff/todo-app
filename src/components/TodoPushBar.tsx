@@ -9,6 +9,7 @@ import { createTodo } from '@redux/TodosSlice';
 import { TodoValues } from '@utils/types';
 import Button from '@components/Button';
 import Progress from '@components/Progress';
+import ColorPicker from './ColorPicker';
 
 const TodoPushBar: FC = (props) => {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ const TodoPushBar: FC = (props) => {
       />
       <div className="todo-push-bar__field-group">
         <Input
+          autoComplete="off"
           className="todo-push-bar__input"
           placeholder="Todo title..."
           {...getFieldProps('title')}
@@ -56,11 +58,19 @@ const TodoPushBar: FC = (props) => {
           {...getFieldProps('description')}
         />
         <Button
+          color={todoInfo.color}
+          className="todo-push-bar__push-btn"
           onClick={handleCreateTodo}
           disabled={!todoInfo.title?.trim() || loading}
         >
           Add todo
         </Button>
+      </div>
+      <div className="todo-push-bar__advanced-setting">
+        <ColorPicker
+          className="todo-push-bar__color-picker"
+          {...getFieldProps('color')}
+        />
       </div>
     </Paper>
   );

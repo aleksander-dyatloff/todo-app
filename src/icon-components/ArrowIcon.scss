@@ -1,9 +1,7 @@
-@import '../vars.scss';
-
 .arrow-icon {
   transform-origin: transform;
-  transition-duration: $tr-duration;
-  transition-timing-function: $tr-timing-fn;
+  transition-duration: var(--tr-duration);
+  transition-timing-function: var(--tr-timing-fn);
 
   &.top {
     transform: rotate(90deg);

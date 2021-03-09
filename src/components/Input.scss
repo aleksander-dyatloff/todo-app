@@ -1,5 +1,3 @@
-@import '../vars.scss';
-
 .input {
   cursor: text;
 
@@ -11,22 +9,22 @@
     z-index: 1;
     width: 100%;
     height: 100%;
-    border-radius: $border-radius / 1.5;
+    border-radius: calc(var(--border-radius) / 1.5);
     border: none;
     background-color: transparent;
-    padding: $spacing;
-    font-family: $font-family;
+    padding: var(--spacing);
+    font-family: inherit;
     font-weight: 500;
-    font-size: $font-size;
-    letter-spacing: $letter-spacing;
+    font-size: inherit;
+    letter-spacing: inherit;
     outline: none;
-    color: $secondary-contrast-color;
-    caret-color: $secondary-contrast-color;
+    color: var(--contrast-color);
+    caret-color: var(--contrast-color);
     resize: none;
     user-select: auto;
     transition-property: opacity;
-    transition-delay: $tr-duration;
-    transition-timing-function: $tr-timing-fn;
+    transition-duration: var(--tr-duration);
+    transition-timing-function: var(--tr-timing-fn);
   }
 
   &__elem:disabled {
@@ -35,7 +33,7 @@
 
   & > .ripple__container {
     z-index: 0;
-    background-color: $background-color;
+    background-color: var(--background-color);
   }
 
   & .ripple__elem {

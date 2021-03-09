@@ -21,6 +21,10 @@ const TodosList: FC<TodosListProps> = ({ todos, loading }) => {
     setExpandedTodo(newExpandedTodo);
   }, []);
 
+  const handleCloseTodo: MouseEventHandler<HTMLButtonElement> = useCallback(() => {
+    setExpandedTodo(null);
+  }, []);
+
   const todoItems = todos.map((todo, index) => (
     <CSSTransition
       key={todo.id}
@@ -30,6 +34,7 @@ const TodosList: FC<TodosListProps> = ({ todos, loading }) => {
       <TodoItem
         expanded={expandedTodo === todo.id}
         expandTodo={handleExpandTodo}
+        closeTodo={handleCloseTodo}
         todo={todo}
         index={index}
       />

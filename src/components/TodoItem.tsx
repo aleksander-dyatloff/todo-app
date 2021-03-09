@@ -12,11 +12,13 @@ import ArrowIcon from '@icons/ArrowIcon';
 import { deleteTodo, updateTodo } from '@redux/TodosSlice';
 import Ticker from './Ticker';
 import TodoBody from './TodoBody';
+import Progress from './Progress';
 
 interface TodoItemProps {
   todo: Todo
   expanded: boolean
   expandTodo: MouseEventHandler
+  closeTodo: MouseEventHandler
   index: number
 }
 
@@ -25,15 +27,19 @@ const TodoItem: FC<TodoItemProps> = (props) => {
     todo,
     expanded,
     expandTodo,
+    closeTodo,
     index,
   } = props;
 
   const dispatch = useDispatch();
 
+  const [deleteLoading, setDeleteLoading] = useState(false);
+
   const [checked, setChecked] = useState(todo.isDone);
 
   const handleCheckTodo = useCallback(() => {
     setChecked((prevState) => !prevState);
+
     dispatch(updateTodo({
       id: todo.id,
       isDone: !todo.isDone,
@@ -41,6 +47,8 @@ const TodoItem: FC<TodoItemProps> = (props) => {
   }, [dispatch, todo.id, todo.isDone]);
 
   const handleDeleteTodo = useCallback(() => {
+    setDeleteLoading(true);
+
     dispatch(deleteTodo(todo.id));
   }, [dispatch, todo.id]);
 
@@ -56,6 +64,7 @@ const TodoItem: FC<TodoItemProps> = (props) => {
       <div className="todo-item__header">
         <CheckBox
           onClick={handleCheckTodo}
+          disabled={deleteLoading}
           color={todo.color}
           className="todo-item__checkbox"
           checked={checked}
@@ -74,20 +83,23 @@ const TodoItem: FC<TodoItemProps> = (props) => {
         </Ticker>
         <IconButton
           className="todo-item__expand-btn todo-item__btn"
-          onClick={expandTodo}
+          onClick={expanded ? closeTodo : expandTodo}
           name={String(todo.id)}
           aria-label="expand todo"
-          title="Expand todo"
         >
           <ArrowIcon direction={expanded ? 'top' : 'bottom'} />
         </IconButton>
         <IconButton
-          className="todo-item__btn"
+          className="todo-item__btn todo-item__delete-btn"
           onClick={handleDeleteTodo}
+          disabled={deleteLoading}
           aria-label="delete todo"
-          title="Delete todo"
         >
           <CloseIcon />
+          <Progress
+            className="todo-item__delete-progress"
+            visible={deleteLoading}
+          />
         </IconButton>
       </div>
       <TodoBody

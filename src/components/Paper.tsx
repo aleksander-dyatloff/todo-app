@@ -15,7 +15,7 @@ const Paper: FC<PaperProps> = (props) => {
 
   return (
     <DynamicElement
-      className={`paper ${className}`}
+      className={`paper secondary ${className}`}
       element={element}
       {...restProps}
     >

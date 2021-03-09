@@ -1,9 +1,7 @@
-@import '../vars.scss';
-
 .paper {
   display: flex;
-  border-radius: $border-radius;
-  background-color: $secondary-color;
-  padding: $spacing * 2;
-  margin: $spacing * 2;
+  border-radius: var(--border-radius);
+  background-color: var(--color);
+  padding: calc(var(--spacing) * 2);
+  margin: calc(var(--spacing) * 2);
 }

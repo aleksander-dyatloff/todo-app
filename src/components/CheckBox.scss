@@ -1,5 +1,3 @@
-@import '../vars.scss';
-
 .checkbox {
   display: inline-flex;
   border-radius: 50%;
@@ -11,73 +9,27 @@
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
-    background-color: rgba($color: $primary-color, $alpha: 0.2);
+    background-color: rgba(var(--color-rgb), 0.2);
   }
   &:hover > .icon {
-    border-color: $primary-color-dark;
-  }
-  &[data-checked=true]:hover > .icon {
-    background-color: $primary-color-dark;
+    border-color: var(--color-dark);
   }
 
   & > .icon {
     color: transparent;
     width: 24px;
     height: 24px;
-    border: 3px solid $primary-color;
-    border-radius: $border-radius / 1.5;
+    border: 3px solid var(--color);
+    border-radius: calc(var(--border-radius) / 1.5);
     transition-property: background-color, border-color, color;
-    transition-duration: $tr-duration;
-    transition-timing-function: $tr-timing-fn;
+    transition-duration: var(--tr-duration);
+    transition-timing-function: var(--tr-timing-fn);
   }
   &[data-checked=true] > .icon {
-    background-color: $primary-color;
-    color: $primary-contrast-color;
+    background-color: var(--color);
+    color: var(--contrast-color);
   }
-
-  &.red {
-    &:hover {
-      background-color: rgba($color: $red-color-dark, $alpha: 0.2);
-    }
-    & > .icon {
-      border-color: $red-color;
-    }
-    &[data-checked=true] > .icon {
-      background-color: $red-color;
-    }
-    &[data-checked=true]:hover > .icon {
-      background-color: $red-color-dark;
-      border-color: $red-color-dark;
-    }
+  &[data-checked=true]:hover > .icon {
+    background-color: var(--color-dark);
   }
-  &.blue {
-    &:hover {
-      background-color: rgba($color: $blue-color-dark, $alpha: 0.2);
-    }
-    & > .icon {
-      border-color: $blue-color;
-    }
-    &[data-checked=true] > .icon {
-      background-color: $blue-color;
-    }
-    &[data-checked=true]:hover > .icon {
-      background-color: $blue-color-dark;
-      border-color: $blue-color-dark;
-    }
-  }
-  &.green {
-    &:hover {
-      background-color: rgba($color: $green-color-dark, $alpha: 0.2);
-    }
-    & > .icon {
-      border-color: $green-color;
-    }
-    &[data-checked=true] > .icon {
-      background-color: $green-color;
-    }
-    &[data-checked=true]:hover > .icon {
-      background-color: $green-color-dark;
-      border-color: $green-color-dark;
-    }
-  } 
 }

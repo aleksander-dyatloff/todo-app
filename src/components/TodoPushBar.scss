@@ -1,15 +1,21 @@
-@import '../vars.scss';
-
 .todo-push-bar {
   position: sticky;
-  top: $spacing * 2;
+  top: calc(var(--spacing) * 2);
   z-index: 1;
   display: flex;
   overflow: hidden;
-  box-shadow: 0 0 0 8px $background-color;
+  box-shadow: 0 0 0 8px var(--background-color);
+
+  &__push-btn {
+    background-color: var(--color);
+
+    &:hover {
+      background-color: var(--color-dark);
+    }
+  }
 
   &__input {
-    margin-bottom: $spacing;
+    margin-bottom: var(--spacing);
     width: 100%;
   }
 
@@ -29,6 +35,8 @@
 
 @media (max-width: 1024px) {
   .todo-push-bar {
+    flex-wrap: wrap;
+
     &__field-group {
       width: 100%;
     }

@@ -1,15 +1,18 @@
+import { AppColor } from '@utils/types';
 import { AllHTMLAttributes, FC } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 interface ProgressProps extends AllHTMLAttributes<HTMLElement> {
   visible: boolean
   variant?: 'linear' | 'circular'
+  color?: AppColor
 }
 
 const Progress: FC<ProgressProps> = (props) => {
   const {
     visible,
     className = '',
+    color = 'primary',
     variant = 'circular',
     ...restProps
   } = props;
@@ -18,11 +21,11 @@ const Progress: FC<ProgressProps> = (props) => {
     <CSSTransition
       unmountOnExit
       in={visible}
-      timeout={250}
+      timeout={300}
       classNames="progress"
     >
       <div
-        className={`progress ${variant} ${className}`}
+        className={`progress ${color} ${variant} ${className}`}
         {...restProps}
       >
         <div className="progress__track">

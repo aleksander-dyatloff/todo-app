@@ -1,9 +1,7 @@
-@import '../vars.scss';
-
 .divider {
   z-index: 1;
   display: flex;
-  background-color: $background-color;
+  background-color: var(--background-color);
 
   &.horizontal {
     width: 100%;
