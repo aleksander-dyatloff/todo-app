@@ -9,12 +9,17 @@ import { createTodo } from '@redux/TodosSlice';
 import { TodoValues } from '@utils/types';
 import Button from '@components/Button';
 import Progress from '@components/Progress';
-import ColorPicker from './ColorPicker';
+import mediaQuery from '@utils/mediaQuery';
+import ColorPicker from '@components/ColorPicker';
+import TrippleDotIcon from '@icons/TrippleDotIcon';
+import IconButton from './IconButton';
 
 const TodoPushBar: FC = (props) => {
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(false);
+
+  const [expandedSettings, setExpandedSettings] = useState(false);
 
   const { values: todoInfo, getFieldProps, resetForm } = useFormik({
     onSubmit: () => {},
@@ -37,6 +42,10 @@ const TodoPushBar: FC = (props) => {
     resetForm();
   }, [dispatch, todoInfo, resetForm]);
 
+  const handleToggleExpandSettings = useCallback(() => {
+    setExpandedSettings((prevState) => !prevState);
+  }, []);
+
   return (
     <Paper className="todo-push-bar">
       <Progress
@@ -57,16 +66,29 @@ const TodoPushBar: FC = (props) => {
           variant="textarea"
           {...getFieldProps('description')}
         />
-        <Button
-          color={todoInfo.color}
-          className="todo-push-bar__push-btn"
-          onClick={handleCreateTodo}
-          disabled={!todoInfo.title?.trim() || loading}
-        >
-          Add todo
-        </Button>
+        <div className="todo-push-bar__action-bar">
+          <Button
+            color={todoInfo.color}
+            className="todo-push-bar__push-btn"
+            onClick={handleCreateTodo}
+            disabled={!todoInfo.title?.trim() || loading}
+          >
+            Add todo
+          </Button>
+
+          {mediaQuery({ min: 0, max: 768 }) && (
+            <IconButton
+              onClick={handleToggleExpandSettings}
+              color={todoInfo.color}
+              className="todo-push-bar__expand-advanced-setting-btn"
+            >
+              <TrippleDotIcon />
+            </IconButton>
+          )}
+
+        </div>
       </div>
-      <div className="todo-push-bar__advanced-setting">
+      <div className={`todo-push-bar__advanced-setting ${expandedSettings ? 'expanded' : ''}`}>
         <ColorPicker
           className="todo-push-bar__color-picker"
           {...getFieldProps('color')}
