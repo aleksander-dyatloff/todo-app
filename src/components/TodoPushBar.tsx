@@ -12,7 +12,7 @@ import Progress from '@components/Progress';
 import mediaQuery from '@utils/mediaQuery';
 import ColorPicker from '@components/ColorPicker';
 import TrippleDotIcon from '@icons/TrippleDotIcon';
-import IconButton from './IconButton';
+import IconButton from '@components/IconButton';
 
 const TodoPushBar: FC = (props) => {
   const dispatch = useDispatch();

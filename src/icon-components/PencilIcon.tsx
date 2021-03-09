@@ -4,7 +4,7 @@ const PencilIcon: FC = () => (
   <svg
     className="icon"
     focusable="false"
-    viewBox="0 0 24 24"
+    viewBox="-2 -2 28 28"
     aria-hidden="true"
     fill="currentColor"
   >

@@ -1,7 +1,7 @@
 .todo-push-bar {
   position: sticky;
   top: calc(var(--spacing) * 2);
-  z-index: 1;
+  z-index: 10;
   display: flex;
   overflow: hidden;
   box-shadow: 0 0 0 8px var(--background-color);
@@ -35,6 +35,11 @@
 
   &__action-bar {
     display: flex;
+  }
+
+  &__color-picker {
+    margin: 0;
+    margin-left: var(--spacing);
   }
 
   &__expand-advanced-setting-btn {

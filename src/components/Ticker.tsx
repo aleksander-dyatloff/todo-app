@@ -1,7 +1,7 @@
 import {
   AllHTMLAttributes, FC, useLayoutEffect, useRef, useState,
 } from 'react';
-import DynamicElement from './DynamicElement';
+import DynamicElement from '@components/DynamicElement';
 
 interface TickerProps extends AllHTMLAttributes<HTMLElement> {
   enable: boolean

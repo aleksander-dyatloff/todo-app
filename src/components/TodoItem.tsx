@@ -1,4 +1,4 @@
-import { Todo } from '@utils/types';
+import { Todo, TodoValues } from '@utils/types';
 import {
   FC, memo, MouseEventHandler, useCallback, useMemo, useState,
 } from 'react';
@@ -10,9 +10,11 @@ import IconButton from '@components/IconButton';
 import CloseIcon from '@icons/CloseIcon';
 import ArrowIcon from '@icons/ArrowIcon';
 import { deleteTodo, updateTodo } from '@redux/TodosSlice';
-import Ticker from './Ticker';
-import TodoBody from './TodoBody';
-import Progress from './Progress';
+import { useFormik } from 'formik';
+import Input from '@components/Input';
+import Ticker from '@components/Ticker';
+import TodoBody from '@components/TodoBody';
+import Progress from '@components/Progress';
 
 interface TodoItemProps {
   todo: Todo
@@ -33,9 +35,22 @@ const TodoItem: FC<TodoItemProps> = (props) => {
 
   const dispatch = useDispatch();
 
+  const { values: todoInfo, getFieldProps } = useFormik({
+    onSubmit: () => {},
+    initialValues: {
+      title: todo.title,
+      description: todo.description,
+      color: todo.color,
+      startTime: todo.startTime,
+      endTime: todo.endTime,
+    } as TodoValues,
+  });
+
   const [deleteLoading, setDeleteLoading] = useState(false);
 
   const [checked, setChecked] = useState(todo.isDone);
+
+  const [editorMode, setEditorMode] = useState(false);
 
   const handleCheckTodo = useCallback(() => {
     setChecked((prevState) => !prevState);
@@ -64,35 +79,47 @@ const TodoItem: FC<TodoItemProps> = (props) => {
       <div className="todo-item__header">
         <CheckBox
           onClick={handleCheckTodo}
-          disabled={deleteLoading}
+          disabled={deleteLoading || editorMode}
           color={todo.color}
           className="todo-item__checkbox"
           checked={checked}
         />
-        <Ticker
-          enable={expanded}
-          className="todo-item__ticker"
-        >
-          <Typography
-            onClick={handleCheckTodo}
-            className={`todo-item__title ${checked ? 'done' : ''}`}
-            variant="h6"
+
+        {editorMode ? (
+          <Input
+            autoComplete="off"
+            className="todo-item__title-input"
+            placeholder="Todo title..."
+            {...getFieldProps('title')}
+          />
+        ) : (
+          <Ticker
+            enable={expanded}
+            className="todo-item__ticker"
           >
-            {todo.title}
-          </Typography>
-        </Ticker>
+            <Typography
+              onClick={handleCheckTodo}
+              className={`todo-item__title ${checked ? 'done' : ''}`}
+              variant="h6"
+            >
+              {todo.title}
+            </Typography>
+          </Ticker>
+        )}
+
         <IconButton
           className="todo-item__expand-btn todo-item__btn"
           onClick={expanded ? closeTodo : expandTodo}
           name={String(todo.id)}
           aria-label="expand todo"
+          disabled={editorMode}
         >
           <ArrowIcon direction={expanded ? 'top' : 'bottom'} />
         </IconButton>
         <IconButton
           className="todo-item__btn todo-item__delete-btn"
           onClick={handleDeleteTodo}
-          disabled={deleteLoading}
+          disabled={deleteLoading || editorMode}
           aria-label="delete todo"
         >
           <CloseIcon />
@@ -104,7 +131,11 @@ const TodoItem: FC<TodoItemProps> = (props) => {
       </div>
       <TodoBody
         todo={todo}
+        todoInfo={todoInfo}
         expanded={expanded}
+        setEditorMode={setEditorMode}
+        editorMode={editorMode}
+        getFieldProps={getFieldProps}
       />
     </Paper>
   );

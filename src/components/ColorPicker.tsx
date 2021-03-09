@@ -2,8 +2,8 @@ import { Color } from '@utils/types';
 import {
   AllHTMLAttributes, FC, FormEventHandler, MouseEventHandler, useCallback,
 } from 'react';
-import IconButton from './IconButton';
-import Paper from './Paper';
+import IconButton from '@components/IconButton';
+import Paper from '@components/Paper';
 
 interface ColorPickerProps extends AllHTMLAttributes<HTMLButtonElement> {
   value: Color

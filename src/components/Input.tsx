@@ -1,6 +1,6 @@
 import { AllHTMLAttributes, FC } from 'react';
 import Ripple from '@components/Ripple';
-import DynamicElement from './DynamicElement';
+import DynamicElement from '@components/DynamicElement';
 
 interface InputProps extends AllHTMLAttributes<HTMLElement> {
   variant?: 'input' | 'textarea'
@@ -12,12 +12,13 @@ const Input: FC<InputProps> = (props) => {
     className = '',
     value,
     disabled,
+    readOnly,
     ...restProps
   } = props;
 
   return (
     <Ripple
-      className={`input ${className}`}
+      className={`input ${readOnly ? 'readonly' : ''} ${className}`}
       disabled={disabled}
       data-disabled={disabled}
     >
@@ -26,6 +27,7 @@ const Input: FC<InputProps> = (props) => {
         element={variant}
         className="input__elem"
         value={value}
+        readOnly={readOnly}
         {...restProps}
       />
     </Ripple>

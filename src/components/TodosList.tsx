@@ -5,7 +5,7 @@ import {
 import TodoItem from '@components/TodoItem';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Progress from '@components/Progress';
-import Typography from './Typography';
+import Typography from '@components/Typography';
 
 interface TodosListProps {
   todos: Todo[]

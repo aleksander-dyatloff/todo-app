@@ -40,8 +40,8 @@ const Ripple: FC<RippleProps> = (props) => {
       ? rippleContainer.width
       : rippleContainer.height;
 
-    const x = e.pageX - rippleContainer.left - size / 2;
-    const y = e.pageY - rippleContainer.top - size / 2;
+    const x = e.clientX - rippleContainer.left - size / 2;
+    const y = e.clientY - rippleContainer.top - size / 2;
 
     const newRipple: RippleElem = {
       id: rippleMaxId++, x, y, size,

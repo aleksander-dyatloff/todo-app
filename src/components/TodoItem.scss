@@ -41,6 +41,7 @@
   }
 
   &__ticker {
+    height: 36px;
     margin-left: calc(var(--spacing) / 2);
     margin-right: auto;
   }
@@ -63,6 +64,8 @@
   }
 
   &__title {
+    flex: 1 1;
+    padding: var(--spacing);
     white-space: nowrap;
     position: relative;
     cursor: pointer;
@@ -97,6 +100,13 @@
     &::after {
       transform: scaleX(1);
     }
+  }
+
+  &__title-input {
+    height: 36px;
+    font-size: 1.2rem;
+    flex: 1 1;
+    margin-right: auto;
   }
 
   &__checkbox {
