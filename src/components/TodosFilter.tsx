@@ -1,4 +1,5 @@
 import CloseIcon from '@icons/CloseIcon';
+import LinkedInIcon from '@icons/LinkedInIcon';
 import { TodoValues } from '@utils/types';
 import {
   Dispatch, FC, memo, SetStateAction, useCallback,
@@ -50,6 +51,14 @@ const TodosFilter: FC<TodosFilterProps> = (props) => {
         onChange={handleFilterChange}
         name="color"
       />
+      <a
+        className={`todos-filter__author-link primary ${filterValues.color || filterValues.isDone ? '' : 'visible'}`}
+        target="_blank"
+        rel="noreferrer"
+        href="https://www.linkedin.com/in/aleksander-dyatloff3112/"
+      >
+        <LinkedInIcon />
+      </a>
       <Typography variant="h6">Checked:</Typography>
       <CheckBox
         className="todos-filter__checkbox"
