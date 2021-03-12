@@ -1,15 +1,26 @@
 import Container from '@components/Container';
 import TodoPushBar from '@components/TodoPushBar';
+import TodosFilter from '@components/TodosFilter';
 import TodosList from '@components/TodosList';
-import { fetchTodos, todosSliceSelector, TodosSliceState } from '@redux/TodosSlice';
+import { RootState } from '@redux/store';
+import {
+  fetchTodos, filteredTodos, todosSliceSelector, TodosSliceState,
+} from '@redux/TodosSlice';
 import { PENDING } from '@utils/constants';
-import { FC, memo, useEffect } from 'react';
+import { TodoValues } from '@utils/types';
+import {
+  FC, memo, useEffect, useState,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const TodosPage: FC = (props) => {
+const TodosPage: FC = () => {
   const dispatch = useDispatch();
 
-  const { todos, fetchStatus }: TodosSliceState = useSelector(todosSliceSelector);
+  const [todosFilter, setTodosFilter] = useState<TodoValues>({});
+
+  const { fetchStatus }: TodosSliceState = useSelector(todosSliceSelector);
+
+  const todos = useSelector((state: RootState) => filteredTodos(state, todosFilter));
 
   useEffect(() => {
     dispatch(fetchTodos());
@@ -21,6 +32,10 @@ const TodosPage: FC = (props) => {
       <TodosList
         todos={todos}
         loading={fetchStatus === PENDING}
+      />
+      <TodosFilter
+        filterTodos={setTodosFilter}
+        filterValues={todosFilter}
       />
     </Container>
   );

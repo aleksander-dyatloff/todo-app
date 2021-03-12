@@ -6,13 +6,13 @@ import IconButton from '@components/IconButton';
 import Paper from '@components/Paper';
 
 interface ColorPickerProps extends AllHTMLAttributes<HTMLButtonElement> {
-  value: Color
+  value: Color | ''
   onChange: FormEventHandler<HTMLButtonElement>
 }
 
 const ColorPicker: FC<ColorPickerProps> = (props) => {
   const {
-    value = 'blue',
+    value,
     name,
     onChange,
     className = '',

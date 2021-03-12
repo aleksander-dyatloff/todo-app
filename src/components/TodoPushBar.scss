@@ -22,8 +22,8 @@
 
   &__field-group {
     display: flex;
+    flex: 1 1;
     flex-direction: column;
-    width: 50%;
   }
 
   &__progress {
@@ -38,6 +38,8 @@
   }
 
   &__color-picker {
+    flex-direction: column;
+    height: 100%;
     margin: 0;
     margin-left: var(--spacing);
   }
@@ -62,9 +64,12 @@
 
     &__color-picker {
       margin: 0;
+      width: 100%;
+      flex-direction: row;
     }
 
     &__advanced-setting {
+      width: 100%;
       overflow: hidden;
       transition-property: max-height, margin-top;
       transition-duration: var(--anim-duration);

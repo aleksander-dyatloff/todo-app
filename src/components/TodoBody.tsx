@@ -1,7 +1,7 @@
 import PencilIcon from '@icons/PencilIcon';
 import { Todo, TodoValues } from '@utils/types';
 import {
-  Dispatch, FC, memo, SetStateAction, useCallback, useState,
+  FC, memo, MouseEventHandler, useCallback, useState,
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Divider from '@components/Divider';
@@ -17,8 +17,9 @@ interface TodoBodyProps {
   todo: Todo
   todoInfo: TodoValues
   expanded: boolean
-  setEditorMode: Dispatch<SetStateAction<boolean>>
-  editorMode: boolean
+  changing: boolean
+  changeTodo: MouseEventHandler
+  closeChangeTodo: MouseEventHandler
   getFieldProps: any
 }
 
@@ -26,8 +27,9 @@ const TodoBody: FC<TodoBodyProps> = (props) => {
   const {
     todo,
     expanded,
-    setEditorMode,
-    editorMode,
+    changeTodo,
+    closeChangeTodo,
+    changing,
     getFieldProps,
     todoInfo,
   } = props;
@@ -36,18 +38,18 @@ const TodoBody: FC<TodoBodyProps> = (props) => {
 
   const [updateLoading, setUpdateLoading] = useState(false);
 
-  const handleActivateEditorMode = useCallback(() => {
-    setEditorMode(true);
-  }, [setEditorMode]);
+  const handleActivateEditorMode: MouseEventHandler = useCallback((e) => {
+    changeTodo(e);
+  }, [changeTodo]);
 
-  const dispatchUpdateTodo = useCallback(async () => {
+  const dispatchUpdateTodo: MouseEventHandler = useCallback(async (e) => {
     setUpdateLoading(true);
 
     await dispatch(updateTodo({ id: todo.id, ...todoInfo }));
 
     setUpdateLoading(false);
-    setEditorMode(false);
-  }, [setEditorMode, dispatch, todo.id, todoInfo]);
+    closeChangeTodo(e);
+  }, [closeChangeTodo, dispatch, todo.id, todoInfo]);
 
   return (
     <CSSTransition
@@ -59,7 +61,7 @@ const TodoBody: FC<TodoBodyProps> = (props) => {
       <div className="todo-item__body todo-body">
         <IconButton
           disabled={!todoInfo.title?.trim()}
-          onClick={editorMode ? dispatchUpdateTodo : handleActivateEditorMode}
+          onClick={changing ? dispatchUpdateTodo : handleActivateEditorMode}
           aria-label="edit todo"
           className="todo-body__update-btn"
         >
@@ -67,12 +69,12 @@ const TodoBody: FC<TodoBodyProps> = (props) => {
             className="todo-body__update-progress"
             visible={updateLoading}
           />
-          {editorMode ? <CheckIcon /> : <PencilIcon />}
+          {changing ? <CheckIcon /> : <PencilIcon />}
         </IconButton>
         <Divider className="todo-body__divider" />
-        <div className={`todo-body__description-wrapper ${editorMode ? 'edit' : ''}`}>
+        <div className={`todo-body__description-wrapper ${changing ? 'edit' : ''}`}>
 
-          {editorMode ? (
+          {changing ? (
             <Input
               className="todo-body__description-input"
               placeholder="Todo description..."

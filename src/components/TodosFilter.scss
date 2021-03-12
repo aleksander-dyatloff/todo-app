@@ -1,0 +1,57 @@
+.todos-filter {
+  position: fixed;
+  max-width: 568px;
+  right: 0;
+  align-items: center;
+  bottom: calc(var(--spacing) * 2);
+  left: 0;
+  margin-block: 0;
+  margin-inline: auto;
+  box-shadow: 0 0 0 8px var(--background-color);
+
+  &__color-picker {
+    margin: 0;
+    margin-right: auto;
+  }
+
+  &__reset-icon-btn {
+    transition-property: transform, opacity, width, padding, margin-right;
+    margin-right: var(--spacing);
+
+    &-enter {
+      transform: 0.6;
+      opacity: 0;
+      width: 0;
+      padding: 0;
+      margin-right: 0;
+    }
+    &-enter-active {
+      transform: 1;
+      opacity: 1;
+      width: 36px;
+      padding: calc(var(--spacing) / 2);
+      margin-right: var(--spacing);
+    }
+    &-exit {
+      transform: 1;
+      opacity: 1;
+      width: 36px;
+      padding: calc(var(--spacing) / 2);
+      margin-right: var(--spacing);
+    }
+    &-exit-active {
+      transform: 0.6;
+      opacity: 0;
+      width: 0;
+      padding: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .todos-filter {
+    right: calc(var(--spacing) * 2);
+    left: calc(var(--spacing) * 2);
+  }
+}

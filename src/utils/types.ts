@@ -16,8 +16,6 @@ export interface Todo {
   description: string
   isDone: boolean
   color: Color
-  startTime: string
-  endTime: string
 }
 
 export interface TodoInfo {
@@ -26,8 +24,6 @@ export interface TodoInfo {
   description?: string
   isDone?: boolean
   color?: Color
-  startTime?: string
-  endTime?: string
 }
 
 export interface TodoValues {
@@ -35,6 +31,4 @@ export interface TodoValues {
   description?: string
   isDone?: boolean
   color?: Color
-  startTime?: string
-  endTime?: string
 }

@@ -7,13 +7,13 @@ import IconButton from '@components/IconButton';
 
 interface CheckBoxProps extends AllHTMLAttributes<HTMLElement> {
   type?: ButtonTypes
-  color?: Color | ''
+  color?: Color
 }
 
 const CheckBox: FC<CheckBoxProps> = (props) => {
   const {
     checked = false,
-    color = '',
+    color = 'primary',
     onChange,
     onClick,
     className = '',

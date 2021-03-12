@@ -1,5 +1,5 @@
 import { RootState } from '@redux/store';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit';
 import {
   FULFILLED, IDLE, PENDING, REJECTED,
 } from '@utils/constants';
@@ -98,5 +98,23 @@ const TodosSlice = createSlice({
 });
 
 export const todosSliceSelector = (state: RootState) => state.todosSliceState;
+
+export const filteredTodos = createSelector(
+  (state: RootState) => state.todosSliceState.todos,
+  (_: RootState, todoMatch: TodoValues) => todoMatch,
+  (todos: Todo[], todoMatch) => {
+    const {
+      isDone, color,
+    } = todoMatch;
+
+    return todos.filter((todo) => {
+      if (isDone && todo.isDone !== isDone) return false;
+
+      if (color && todo.color !== color) return false;
+
+      return true;
+    });
+  },
+);
 
 export default TodosSlice.reducer;

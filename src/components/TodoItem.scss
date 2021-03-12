@@ -15,10 +15,12 @@
     transition-timing-function: var(--anim-timing-fn-in);
     opacity: 0;
     transform: scale(0.6);
+    max-height: 0;
   }
   &-enter-active {
     opacity: 1;
     transform: scale(1);
+    max-height: 68px;
   }
   &-exit {
     transition-delay: 0ms !important;
@@ -38,106 +40,6 @@
     display: flex;
     align-items: center;
     padding: calc(var(--spacing) * 2);
-  }
-
-  &__ticker {
-    height: 36px;
-    margin-left: calc(var(--spacing) / 2);
-    margin-right: auto;
-  }
-
-  &__delete-btn {
-    position: relative;
-  }
-
-  &__delete-progress {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-
-    &.progress-enter {
-      max-height: 32px;
-    }
-  }
-
-  &__title {
-    flex: 1 1;
-    padding: var(--spacing);
-    white-space: nowrap;
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-    padding-left: calc(var(--spacing) / 2);
-    margin-right: auto;
-    transition-property: color;
-    transition-duration: var(--anim-duration);
-    transition-timing-function: var(--anim-timing-fn);
-    padding-right: calc(var(--spacing) * 3);
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: calc(var(--spacing) / 2);
-      right: calc(var(--spacing) * 3);
-      margin: auto 0;
-      height: 2px;
-      background-color: gray;
-      border-radius: 2px;
-      transform: scaleX(0);
-      transition-property: transform;
-      transition-duration: var(--anim-duration);
-      transition-timing-function: var(--anim-timing-fn);
-    }
-  }
-  &__title.done {
-    color: gray;
-
-    &::after {
-      transform: scaleX(1);
-    }
-  }
-
-  &__title-input {
-    height: 36px;
-    font-size: 1.2rem;
-    flex: 1 1;
-    margin-right: auto;
-    
-    & > .ripple__container {
-      background-color: transparent;
-    }
-  }
-
-  &__title-wrapper {
-    overflow: hidden;
-    border-radius: calc(var(--border-radius) / 1.5);
-    flex: 1 1;
-    display: inline-flex;
-    background-color: transparent;
-    transition-property: background-color;
-    transition-duration: var(--tr-duration);
-    transition-timing-function: var(--tr-timing-fn);
-
-    &.edit {
-      background-color: var(--background-color);
-    }
-  }
-
-  &__checkbox {
-    flex-shrink: 0;
-  }
-
-  &__btn {
-    flex-shrink: 0;
-  }
-
-  &__expand-btn {
-    margin-inline: calc(var(--spacing) / 2);
   }
 
   &__mark {
