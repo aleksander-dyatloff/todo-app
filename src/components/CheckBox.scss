@@ -9,7 +9,7 @@
   &.with-label {
     width: auto;
     border-radius: 18px;
-    padding-inline: var(--spacing);
+    padding: 0 var(--spacing);
   }
 
   &:hover {

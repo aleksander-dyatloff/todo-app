@@ -5,15 +5,14 @@
   align-items: center;
   bottom: calc(var(--spacing) * 2);
   left: 0;
-  margin-block: 0;
-  margin-inline: auto;
+  margin: 0 auto;
   box-shadow: 0 0 0 8px var(--background-color);
 
   &__author-link {
     color: var(--color);
     width: 36px;
     height: 36px;
-    margin-inline: auto;
+    margin: 0 auto;
     transform: scale(0.6);
     opacity: 0;
     transition-property: transform, opacity;
