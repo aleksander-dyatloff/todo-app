@@ -33,7 +33,7 @@
     opacity: 0;
     transform: scale(0.6);
     max-height: 0;
-    margin-block: 0;
+    margin-bottom: calc(var(--spacing) * 2);
   }
 
   &__header {

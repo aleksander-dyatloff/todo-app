@@ -16,8 +16,8 @@
     transform: scale(0.6);
     opacity: 0;
     transition-property: transform, opacity;
-    transition-duration: var(--anim-duration);
-    transition-timing-function: var(--anim-timing-fn);
+    transition-duration: var(--tr-duration);
+    transition-timing-function: var(--tr-timing-fn);
 
     &.visible {
       transform: scale(1);
