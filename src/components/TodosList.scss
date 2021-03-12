@@ -1,6 +1,7 @@
 .todos-list {
   display: flex;
   flex-direction: column;
+  margin-bottom: 100px;
 
   & > .todo-item {
     margin-top: 0;
