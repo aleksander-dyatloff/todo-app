@@ -4,10 +4,12 @@ import {
 import { ButtonTypes, Color } from '@utils/types';
 import CheckIcon from '@icons/CheckIcon';
 import IconButton from '@components/IconButton';
+import Typography from './Typography';
 
 interface CheckBoxProps extends AllHTMLAttributes<HTMLElement> {
   type?: ButtonTypes
   color?: Color
+  label?: string
 }
 
 const CheckBox: FC<CheckBoxProps> = (props) => {
@@ -15,6 +17,7 @@ const CheckBox: FC<CheckBoxProps> = (props) => {
     checked = false,
     color = 'primary',
     onChange,
+    label,
     onClick,
     className = '',
     ...restProps
@@ -40,9 +43,19 @@ const CheckBox: FC<CheckBoxProps> = (props) => {
       data-checked={checked}
       role="checkbox"
       aria-checked={checked}
-      className={`checkbox ${color} ${className}`}
+      className={`checkbox ${color} ${label ? 'with-label' : ''} ${className}`}
       {...restProps}
     >
+
+      {label && (
+        <Typography
+          className="checkbox__label secondary"
+          variant="h6"
+        >
+          {label}
+        </Typography>
+      )}
+
       <CheckIcon />
     </IconButton>
   );

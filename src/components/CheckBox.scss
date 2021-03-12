@@ -1,18 +1,27 @@
 .checkbox {
   display: inline-flex;
-  border-radius: 50%;
-  justify-content: center;
-  align-items: center;
   background-color: transparent;
+  border-radius: 50%;
   padding: 0;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-tap-highlight-color: transparent;
+
+  &.with-label {
+    width: auto;
+    border-radius: 18px;
+    padding-inline: var(--spacing);
+  }
 
   &:hover {
     background-color: rgba(var(--color-rgb), 0.2);
   }
   &:hover > .icon {
     border-color: var(--color-dark);
+  }
+
+  &__label {
+    text-transform: none;
+    margin-right: var(--spacing);
   }
 
   & > .icon {

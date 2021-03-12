@@ -9,7 +9,6 @@ import CheckBox from './CheckBox';
 import ColorPicker from './ColorPicker';
 import IconButton from './IconButton';
 import Paper from './Paper';
-import Typography from './Typography';
 
 interface TodosFilterProps {
   filterTodos: Dispatch<SetStateAction<TodoValues>>
@@ -59,11 +58,11 @@ const TodosFilter: FC<TodosFilterProps> = (props) => {
       >
         <LinkedInIcon />
       </a>
-      <Typography variant="h6">Checked:</Typography>
       <CheckBox
         className="todos-filter__checkbox"
         checked={filterValues.isDone}
         onChange={handleFilterChange}
+        label="Checked"
         name="isDone"
       />
     </Paper>
